@@ -18,7 +18,7 @@
         }
         header {
             font-size: 3rem;
-            padding: 20px;
+            padding: 2vw;
             text-shadow: 0 0 15px gold;
             animation: glow 2s infinite alternate;
         }
@@ -27,32 +27,40 @@
             to { text-shadow: 0 0 20px goldenrod; }
         }
         .container {
-            max-width: 900px;
+            max-width: 90%;
             margin: auto;
-            padding: 20px;
+            padding: 2vw;
             background: rgba(0, 0, 0, 0.8);
             border-radius: 10px;
             box-shadow: 0 0 15px rgba(255, 215, 0, 0.6);
         }
         .section {
-            margin: 40px 0;
-            padding: 20px;
+            margin: 4vw 0;
+            padding: 2vw;
             border-bottom: 2px solid gold;
         }
         .section h2 {
             color: gold;
             text-shadow: 0 0 10px goldenrod;
+            font-size: 2rem;
+        }
+        .section img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
         }
         .card-container {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
+            gap: 2vw;
         }
         .card {
             background: #222;
-            width: 250px;
-            margin: 15px;
-            padding: 15px;
+            width: 100%;
+            max-width: 250px;
+            margin: 1.5vw;
+            padding: 1.5vw;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(255, 215, 0, 0.6);
             text-align: center;
@@ -63,10 +71,11 @@
         }
         .card img {
             width: 100%;
+            height: auto;
             border-radius: 10px;
         }
         .magic-button {
-            padding: 12px 20px;
+            padding: 1rem 2rem;
             background: linear-gradient(45deg, gold, darkgoldenrod);
             border: none;
             color: black;
@@ -76,6 +85,7 @@
             transition: 0.4s;
             box-shadow: 0 0 10px gold;
             border-radius: 5px;
+            touch-action: manipulation;
         }
         .magic-button:hover {
             box-shadow: 0 0 20px gold, 0 0 40px goldenrod;
@@ -89,6 +99,56 @@
             left: 0;
             z-index: -1;
         }
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        ul li {
+            margin: 1vw 0;
+        }
+
+        /* Media Queries for Responsiveness */
+        @media (max-width: 768px) {
+            header {
+                font-size: 2.5rem;
+            }
+            .section h2 {
+                font-size: 1.8rem;
+            }
+            .card {
+                max-width: 45%;
+                margin: 2vw;
+            }
+            .magic-button {
+                font-size: 1rem;
+                padding: 0.8rem 1.5rem;
+            }
+            .container {
+                padding: 4vw;
+            }
+        }
+        @media (max-width: 480px) {
+            header {
+                font-size: 1.8rem;
+            }
+            .section h2 {
+                font-size: 1.5rem;
+            }
+            .card {
+                max-width: 100%;
+                margin: 3vw 0;
+            }
+            .magic-button {
+                font-size: 0.9rem;
+                padding: 0.6rem 1.2rem;
+            }
+            .container {
+                max-width: 95%;
+            }
+            .section img {
+                max-width: 80%;
+            }
+        }
     </style>
 </head>
 <body>
@@ -99,24 +159,24 @@
         <div class="section">
             <h2>Гарри Поттер - Избранный</h2>
             <p>Гарри Поттер — мальчик, который выжил. Он был выбран судьбой для борьбы с самым тёмным волшебником всех времён — Лордом Волан-де-Мортом.</p>
-            <img src="https://upload.wikimedia.org/wikipedia/en/d/d7/Harry_Potter_character_poster.jpg" width="400">
+            <img src="https://upload.wikimedia.org/wikipedia/en/d/d7/Harry_Potter_character_poster.jpg" alt="Гарри Поттер">
         </div>
 
         <div class="section">
             <h2>Персонажи</h2>
             <div class="card-container">
                 <div class="card">
-                    <img src="1920x (1).webp">
+                    <img src="1920x (1).webp" alt="Гермиона Грейнджер">
                     <h3>Гермиона Грейнджер</h3>
                     <p>Самая умная ведьма своего поколения. Любит книги и справедливость.</p>
                 </div>
                 <div class="card">
-                    <img src="https://upload.wikimedia.org/wikipedia/en/5/5e/Ron_Weasley_poster.jpg">
+                    <img src="https://upload.wikimedia.org/wikipedia/en/5/5e/Ron_Weasley_poster.jpg" alt="Рон Уизли">
                     <h3>Рон Уизли</h3>
                     <p>Лучший друг Гарри, верный и смелый друг.</p>
                 </div>
                 <div class="card">
-                    <img src="1920x.webp">
+                    <img src="1920x.webp" alt="Северус Снегг">
                     <h3>Северус Снегг</h3>
                     <p>Таинственный профессор Зельеварения с непростым прошлым.</p>
                 </div>
@@ -149,7 +209,7 @@
     <script>
         particlesJS("particles-js", {
             "particles": {
-                "number": { "value": 80 },
+                "number": { "value": window.innerWidth < 480 ? 40 : 80 }, /* Reduce particles on mobile */
                 "color": { "value": "#FFD700" },
                 "shape": { "type": "circle" },
                 "opacity": { "value": 0.6 },
